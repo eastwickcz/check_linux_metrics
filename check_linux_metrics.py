@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Fork Author: Lukáš Hájek aka eastwickcz
+# Fork Project URL: https://github.com/eastwickcz/check_linux_metrics
 # Fork Purpose: Update the codebase for Python 3 compatibility while preserving original functionality.
 # Fork Date: 20.11.2024
 
