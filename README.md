@@ -1,30 +1,37 @@
 # check_linux_metrics
 [check_linux_metrics](https://github.com/kxr/check_linux_metrics)
-A monitoring plugin for icinga/nagios/nsca, that reports basic system metrics of a linux host: cpu, load, threads, openfiles, procs, diskio, disku, memory, swap, network
+
+This project is a fork of the original [check_linux_metrics](https://github.com/kxr/check_linux_metrics) by Khizer Naeem, updated for Python 3 compatibility. It retains the original functionality of monitoring key system metrics while ensuring compatibility with modern Python versions.
+
+A monitoring plugin for icinga/nagios/nsca, that reports basic system metrics of a Linux host: cpu, load, threads, openfiles, procs, diskio, disku, memory, swap, network.
 
 ## Key features
 
- - **Minimal dependency:** Only needs basic python libraries which are installed by default on linux, all the metrics are calculated from the /proc filesystem
+ - **Minimal dependency:** Only needs basic Python libraries which are installed by default on Linux. All the metrics are calculated from the `/proc` filesystem.
 
- - **Minimal privilege:**  Can be run by any non-priviliged user. Does not require root
+ - **Minimal privilege:** Can be run by any non-privileged user. Does not require root access.
 
- - **No Sampling:** Important metrics like CPU, DiskIO, NetworkIO and new process forks are calculated based on the cumulative values provided by the kernel. These cumulative values are provided by the kernel since uptime, when any of these checks are called the first time, the values are copied in the interim directory. Next time whenever the plugin is called, the diffrential/interim values are reported. This ensures that there is no peak/spike missed in between the plugin calls.
+ - **No Sampling:** Important metrics like CPU, DiskIO, NetworkIO, and new process forks are calculated based on the cumulative values provided by the kernel. These cumulative values are provided by the kernel since uptime. When any of these checks are called the first time, the values are copied in the interim directory. Next time, whenever the plugin is called, the differential/interim values are reported. This ensures that there is no peak/spike missed between the plugin calls.
+
+## Python 3 Update
+
+This fork modernizes the original codebase by rewriting it to be compatible with Python 3. All core functionalities remain the same, but compatibility and performance improvements have been made to ensure the tool works with contemporary systems.
 
 ## TODO
- - Improve and stanadardize argument handling
+ - Improve and standardize argument handling
  - Print usage instructions if wrong/bad arguments are passed
  - Add more sanity checks for arguments
  - Add more warning and critical thresholds
  - Move the output printing part from each function to a single function
  - Enable/disable perfdata
- - Add a file age plugin?
- - Add a Process wise memory and cpu usage reporting function?
- - Add functionality of directly sending email (making this script usefull as a standalone monitoring)
- - Add graphite output support?
+ - Add a file age plugin
+ - Add a process-wise memory and CPU usage reporting function
+ - Add functionality for directly sending emails (making this script useful as a standalone monitoring tool)
+ - Add Graphite output support
  
 ## Program Structure
 
-  The Main function checks and validate arguments and call the respective independent functions check_cpu etc.
+  The main function checks and validates arguments, then calls the respective independent functions such as `check_cpu`, `check_memory`, etc.
 
 ## Usage Examples
  - CPU
