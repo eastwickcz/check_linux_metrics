@@ -529,6 +529,12 @@ def check_swap(warn=None, crit=None):
             elif line.startswith('SwapCached: '):
                 swap['cached'] = int(line.split()[1])
 
+    if swap['total'] == 0:
+        status_outp = "No swap space configured on this system"
+        status_code = 0
+        print(f"{status_outp} | {perfdata}")
+        sys.exit(status_code)
+
     s = {
         'total': float(swap['total'] / 1024.00),
         'cached': float(swap['cached'] / 1024.00),
